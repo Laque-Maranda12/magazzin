@@ -1,270 +1,132 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Утренний обжиг — каталог кофе</title>
-  <meta name="description" content="Каталог свежеобжаренного спешелти-кофе: моносорта и бленды от Утреннего обжига." />
+  <title>Утренний обжиг — спешелти-кофе</title>
+  <meta name="description" content="Каталог свежеобжаренного спешелти-кофе: моносорта и бленды. Фильтры, корзина, избранное." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet"
   />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- ░░ Шапка ░░ -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="brand" href="#" aria-label="Утренний обжиг — на главную">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M16 3c4 3 4 6 1.8 9C15.5 15 15 17 17 20" />
+          <path d="M11 7c2.6 2 2.6 4 1 6-1.6 2-1.4 3.4 0 5.4" />
+          <rect x="5" y="20" width="18" height="8" rx="4" />
+          <path d="M23 21h2.5a3 3 0 0 1 0 6H23" />
+        </svg>
+        <span class="brand__name">Утренний&nbsp;обжиг</span>
+      </a>
+
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="#catalog">Каталог</a>
+        <a href="#">Подписка</a>
+        <a href="#">О нас</a>
+      </nav>
+
+      <div class="topbar__actions">
+        <button class="iconbtn" id="themeToggle" type="button" aria-label="Переключить тему">
+          <svg class="ic ic--sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+          <svg class="ic ic--moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>
+        </button>
+
+        <button class="iconbtn iconbtn--count" id="wishOpen" type="button" aria-label="Избранное">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.2C.4 8.6 1.9 5 5.2 5c2 0 3.3 1.1 4.1 2.3l.7 1 .7-1C11.5 6.1 12.8 5 14.8 5 18.1 5 19.6 8.6 22 11.8 19.5 16.4 12 21 12 21z"/></svg>
+          <span class="countbadge" id="wishCount" hidden>0</span>
+        </button>
+
+        <button class="iconbtn iconbtn--count" id="cartOpen" type="button" aria-label="Корзина">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 12.3a1 1 0 0 0 1 .7h8.7a1 1 0 0 0 1-.8L21 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
+          <span class="countbadge" id="cartCount" hidden>0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
   <main>
-    <section class="catalog" aria-labelledby="catalog-title">
+    <section class="catalog" id="catalog" aria-labelledby="catalog-title">
       <header class="catalog__head">
         <div class="catalog__intro">
-          <p class="eyebrow">Свежий обжиг каждую неделю</p>
-          <h1 id="catalog-title" class="catalog__title">Каталог кофе</h1>
+          <p class="eyebrow"><span class="eyebrow__dot"></span> Свежий обжиг каждую неделю</p>
+          <h1 id="catalog-title" class="catalog__title">Каталог&nbsp;кофе</h1>
           <p class="catalog__lede">
             Моносорта и авторские бленды для эспрессо и фильтра.
             Обжариваем под заказ и отправляем в течение суток.
           </p>
         </div>
 
-        <div class="catalog__filters" role="group" aria-label="Фильтр по способу заваривания">
-          <button class="chip chip--active" type="button">Все</button>
-          <button class="chip" type="button">Эспрессо</button>
-          <button class="chip" type="button">Фильтр</button>
-          <button class="chip" type="button">Декаф</button>
+        <div class="catalog__stats" aria-hidden="true">
+          <div class="stat"><span class="stat__num">8</span><span class="stat__lbl">сортов</span></div>
+          <div class="stat"><span class="stat__num">24ч</span><span class="stat__lbl">до отправки</span></div>
+          <div class="stat"><span class="stat__num">4.8</span><span class="stat__lbl">★ рейтинг</span></div>
         </div>
       </header>
 
-      <ul class="grid" role="list">
-        <!-- 1 -->
-        <li class="card">
-          <div class="card__media" style="--c1:#f4c95d;--c2:#e08a3c">
-            <span class="card__badge card__badge--new">Новинка</span>
-            <button class="card__wish" type="button" aria-label="В избранное">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.2C.4 8.6 1.9 5 5.2 5c2 0 3.3 1.1 4.1 2.3l.7 1 .7-1C11.5 6.1 12.8 5 14.8 5 18.1 5 19.6 8.6 22 11.8 19.5 16.4 12 21 12 21z"/></svg>
-            </button>
-            <a href="#" class="card__link" aria-label="Иргачеффе Конга">
-              <img class="card__img" loading="lazy" alt="Зёрна эфиопского кофе"
-                src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=800&q=80"
-                onerror="this.closest('.card__media').classList.add('card__media--noimg')" />
-              <span class="card__art" aria-hidden="true">☕</span>
-            </a>
-          </div>
-          <div class="card__body">
-            <p class="card__origin">Эфиопия · Иргачеффе</p>
-            <h2 class="card__name"><a href="#">Иргачеффе Конга</a></h2>
-            <p class="card__notes">Жасмин, бергамот, чёрный чай</p>
-            <p class="card__rating"><span class="star" aria-hidden="true">★</span> 4.9 <span class="card__reviews">· 214 отзывов</span></p>
-            <div class="card__foot">
-              <span class="price">990&nbsp;₽<span class="price__unit">/ 250 г</span></span>
-              <button class="btn btn--buy" type="button">
-                <svg class="btn__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 12.3a1 1 0 0 0 1 .7h8.7a1 1 0 0 0 1-.8L21 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
-                В корзину
-              </button>
-            </div>
-          </div>
-        </li>
+      <!-- ░░ Панель управления ░░ -->
+      <div class="toolbar">
+        <div class="chips" id="filters" role="group" aria-label="Фильтр по способу заваривания">
+          <button class="chip chip--active" type="button" data-filter="all">Все</button>
+          <button class="chip" type="button" data-filter="espresso">Эспрессо</button>
+          <button class="chip" type="button" data-filter="filter">Фильтр</button>
+          <button class="chip" type="button" data-filter="decaf">Декаф</button>
+        </div>
 
-        <!-- 2 -->
-        <li class="card">
-          <div class="card__media" style="--c1:#e8825a;--c2:#b9472d">
-            <button class="card__wish" type="button" aria-label="В избранное">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.2C.4 8.6 1.9 5 5.2 5c2 0 3.3 1.1 4.1 2.3l.7 1 .7-1C11.5 6.1 12.8 5 14.8 5 18.1 5 19.6 8.6 22 11.8 19.5 16.4 12 21 12 21z"/></svg>
-            </button>
-            <a href="#" class="card__link" aria-label="Уила Супремо">
-              <img class="card__img" loading="lazy" alt="Чашка кофе с латте-артом"
-                src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=800&q=80"
-                onerror="this.closest('.card__media').classList.add('card__media--noimg')" />
-              <span class="card__art" aria-hidden="true">☕</span>
-            </a>
-          </div>
-          <div class="card__body">
-            <p class="card__origin">Колумбия · Уила</p>
-            <h2 class="card__name"><a href="#">Уила Супремо</a></h2>
-            <p class="card__notes">Молочный шоколад, слива, карамель</p>
-            <p class="card__rating"><span class="star" aria-hidden="true">★</span> 4.7 <span class="card__reviews">· 168 отзывов</span></p>
-            <div class="card__foot">
-              <span class="price">850&nbsp;₽<span class="price__unit">/ 250 г</span></span>
-              <button class="btn btn--buy" type="button">
-                <svg class="btn__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 12.3a1 1 0 0 0 1 .7h8.7a1 1 0 0 0 1-.8L21 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
-                В корзину
-              </button>
-            </div>
-          </div>
-        </li>
+        <div class="toolbar__right">
+          <span class="results" id="results">8 товаров</span>
+          <label class="sort">
+            <span class="sort__lbl">Сортировка</span>
+            <select id="sort" aria-label="Сортировка">
+              <option value="popular">Популярные</option>
+              <option value="price-asc">Сначала дешевле</option>
+              <option value="price-desc">Сначала дороже</option>
+              <option value="rating">По рейтингу</option>
+            </select>
+            <svg class="sort__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </label>
+        </div>
+      </div>
 
-        <!-- 3 -->
-        <li class="card">
-          <div class="card__media" style="--c1:#d65a6e;--c2:#8e2f4a">
-            <span class="card__badge card__badge--hit">Хит</span>
-            <button class="card__wish" type="button" aria-label="В избранное">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.2C.4 8.6 1.9 5 5.2 5c2 0 3.3 1.1 4.1 2.3l.7 1 .7-1C11.5 6.1 12.8 5 14.8 5 18.1 5 19.6 8.6 22 11.8 19.5 16.4 12 21 12 21z"/></svg>
-            </button>
-            <a href="#" class="card__link" aria-label="Ньери АА">
-              <img class="card__img" loading="lazy" alt="Кофе вид сверху"
-                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80"
-                onerror="this.closest('.card__media').classList.add('card__media--noimg')" />
-              <span class="card__art" aria-hidden="true">☕</span>
-            </a>
-          </div>
-          <div class="card__body">
-            <p class="card__origin">Кения · Ньери</p>
-            <h2 class="card__name"><a href="#">Ньери АА</a></h2>
-            <p class="card__notes">Чёрная смородина, томат, грейпфрут</p>
-            <p class="card__rating"><span class="star" aria-hidden="true">★</span> 5.0 <span class="card__reviews">· 92 отзыва</span></p>
-            <div class="card__foot">
-              <span class="price">1&nbsp;190&nbsp;₽<span class="price__unit">/ 250 г</span></span>
-              <button class="btn btn--buy" type="button">
-                <svg class="btn__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 12.3a1 1 0 0 0 1 .7h8.7a1 1 0 0 0 1-.8L21 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
-                В корзину
-              </button>
-            </div>
-          </div>
-        </li>
+      <ul class="grid" id="grid" role="list"></ul>
 
-        <!-- 4 -->
-        <li class="card">
-          <div class="card__media" style="--c1:#caa472;--c2:#8a6234">
-            <button class="card__wish" type="button" aria-label="В избранное">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.2C.4 8.6 1.9 5 5.2 5c2 0 3.3 1.1 4.1 2.3l.7 1 .7-1C11.5 6.1 12.8 5 14.8 5 18.1 5 19.6 8.6 22 11.8 19.5 16.4 12 21 12 21z"/></svg>
-            </button>
-            <a href="#" class="card__link" aria-label="Серрадо Натурал">
-              <img class="card__img" loading="lazy" alt="Кофейные зёрна"
-                src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=800&q=80"
-                onerror="this.closest('.card__media').classList.add('card__media--noimg')" />
-              <span class="card__art" aria-hidden="true">☕</span>
-            </a>
-          </div>
-          <div class="card__body">
-            <p class="card__origin">Бразилия · Серрадо</p>
-            <h2 class="card__name"><a href="#">Серрадо Натурал</a></h2>
-            <p class="card__notes">Фундук, какао, выпечка</p>
-            <p class="card__rating"><span class="star" aria-hidden="true">★</span> 4.6 <span class="card__reviews">· 301 отзыв</span></p>
-            <div class="card__foot">
-              <span class="price">790&nbsp;₽<span class="price__unit">/ 250 г</span></span>
-              <button class="btn btn--buy" type="button">
-                <svg class="btn__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 12.3a1 1 0 0 0 1 .7h8.7a1 1 0 0 0 1-.8L21 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
-                В корзину
-              </button>
-            </div>
-          </div>
-        </li>
-
-        <!-- 5 -->
-        <li class="card">
-          <div class="card__media" style="--c1:#7fae7b;--c2:#3f7a52">
-            <button class="card__wish" type="button" aria-label="В избранное">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.2C.4 8.6 1.9 5 5.2 5c2 0 3.3 1.1 4.1 2.3l.7 1 .7-1C11.5 6.1 12.8 5 14.8 5 18.1 5 19.6 8.6 22 11.8 19.5 16.4 12 21 12 21z"/></svg>
-            </button>
-            <a href="#" class="card__link" aria-label="Антигуа Уашед">
-              <img class="card__img" loading="lazy" alt="Свежеобжаренные зёрна"
-                src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=800&q=80"
-                onerror="this.closest('.card__media').classList.add('card__media--noimg')" />
-              <span class="card__art" aria-hidden="true">☕</span>
-            </a>
-          </div>
-          <div class="card__body">
-            <p class="card__origin">Гватемала · Антигуа</p>
-            <h2 class="card__name"><a href="#">Антигуа Уашед</a></h2>
-            <p class="card__notes">Тёмный шоколад, апельсин, миндаль</p>
-            <p class="card__rating"><span class="star" aria-hidden="true">★</span> 4.8 <span class="card__reviews">· 137 отзывов</span></p>
-            <div class="card__foot">
-              <span class="price">920&nbsp;₽<span class="price__unit">/ 250 г</span></span>
-              <button class="btn btn--buy" type="button">
-                <svg class="btn__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 12.3a1 1 0 0 0 1 .7h8.7a1 1 0 0 0 1-.8L21 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
-                В корзину
-              </button>
-            </div>
-          </div>
-        </li>
-
-        <!-- 6 -->
-        <li class="card">
-          <div class="card__media" style="--c1:#b98a5e;--c2:#6e4a2c">
-            <span class="card__badge card__badge--hit">Хит</span>
-            <button class="card__wish" type="button" aria-label="В избранное">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.2C.4 8.6 1.9 5 5.2 5c2 0 3.3 1.1 4.1 2.3l.7 1 .7-1C11.5 6.1 12.8 5 14.8 5 18.1 5 19.6 8.6 22 11.8 19.5 16.4 12 21 12 21z"/></svg>
-            </button>
-            <a href="#" class="card__link" aria-label="Доброе утро">
-              <img class="card__img" loading="lazy" alt="Чашка эспрессо"
-                src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80"
-                onerror="this.closest('.card__media').classList.add('card__media--noimg')" />
-              <span class="card__art" aria-hidden="true">☕</span>
-            </a>
-          </div>
-          <div class="card__body">
-            <p class="card__origin">Бленд · Эспрессо</p>
-            <h2 class="card__name"><a href="#">Доброе утро</a></h2>
-            <p class="card__notes">Карамель, орех, тёмный шоколад</p>
-            <p class="card__rating"><span class="star" aria-hidden="true">★</span> 4.8 <span class="card__reviews">· 456 отзывов</span></p>
-            <div class="card__foot">
-              <span class="price">740&nbsp;₽<span class="price__unit">/ 250 г</span></span>
-              <button class="btn btn--buy" type="button">
-                <svg class="btn__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 12.3a1 1 0 0 0 1 .7h8.7a1 1 0 0 0 1-.8L21 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
-                В корзину
-              </button>
-            </div>
-          </div>
-        </li>
-
-        <!-- 7 -->
-        <li class="card">
-          <div class="card__media" style="--c1:#9ea7c4;--c2:#5a6488">
-            <button class="card__wish" type="button" aria-label="В избранное">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.2C.4 8.6 1.9 5 5.2 5c2 0 3.3 1.1 4.1 2.3l.7 1 .7-1C11.5 6.1 12.8 5 14.8 5 18.1 5 19.6 8.6 22 11.8 19.5 16.4 12 21 12 21z"/></svg>
-            </button>
-            <a href="#" class="card__link" aria-label="Перу без кофеина">
-              <img class="card__img" loading="lazy" alt="Кофе на столе"
-                src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80"
-                onerror="this.closest('.card__media').classList.add('card__media--noimg')" />
-              <span class="card__art" aria-hidden="true">☕</span>
-            </a>
-          </div>
-          <div class="card__body">
-            <p class="card__origin">Перу · Декаф</p>
-            <h2 class="card__name"><a href="#">Перу без кофеина</a></h2>
-            <p class="card__notes">Красное яблоко, тростниковый сахар</p>
-            <p class="card__rating"><span class="star" aria-hidden="true">★</span> 4.5 <span class="card__reviews">· 88 отзывов</span></p>
-            <div class="card__foot">
-              <span class="price">880&nbsp;₽<span class="price__unit">/ 250 г</span></span>
-              <button class="btn btn--buy" type="button">
-                <svg class="btn__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 12.3a1 1 0 0 0 1 .7h8.7a1 1 0 0 0 1-.8L21 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
-                В корзину
-              </button>
-            </div>
-          </div>
-        </li>
-
-        <!-- 8 -->
-        <li class="card">
-          <div class="card__media" style="--c1:#f0b6c2;--c2:#c76e8a">
-            <span class="card__badge card__badge--new">Лимит</span>
-            <button class="card__wish" type="button" aria-label="В избранное">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.2C.4 8.6 1.9 5 5.2 5c2 0 3.3 1.1 4.1 2.3l.7 1 .7-1C11.5 6.1 12.8 5 14.8 5 18.1 5 19.6 8.6 22 11.8 19.5 16.4 12 21 12 21z"/></svg>
-            </button>
-            <a href="#" class="card__link" aria-label="Гейша Эсмеральда">
-              <img class="card__img" loading="lazy" alt="Зёрна спешелти-кофе"
-                src="https://images.unsplash.com/photo-1442550528053-c431ecb55509?auto=format&fit=crop&w=800&q=80"
-                onerror="this.closest('.card__media').classList.add('card__media--noimg')" />
-              <span class="card__art" aria-hidden="true">☕</span>
-            </a>
-          </div>
-          <div class="card__body">
-            <p class="card__origin">Панама · Гейша</p>
-            <h2 class="card__name"><a href="#">Гейша Эсмеральда</a></h2>
-            <p class="card__notes">Личи, жасмин, мёд, персик</p>
-            <p class="card__rating"><span class="star" aria-hidden="true">★</span> 5.0 <span class="card__reviews">· 47 отзывов</span></p>
-            <div class="card__foot">
-              <span class="price">2&nbsp;450&nbsp;₽<span class="price__unit">/ 250 г</span></span>
-              <button class="btn btn--buy" type="button">
-                <svg class="btn__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 12.3a1 1 0 0 0 1 .7h8.7a1 1 0 0 0 1-.8L21 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
-                В корзину
-              </button>
-            </div>
-          </div>
-        </li>
-      </ul>
+      <p class="empty" id="empty" hidden>В этой категории пока пусто — загляните в «Все».</p>
+      <noscript><p class="empty">Для интерактивного каталога включите JavaScript.</p></noscript>
     </section>
   </main>
+
+  <footer class="footer">
+    <p>© 2026 Утренний обжиг · сверстано вручную на HTML, CSS и vanilla JS</p>
+  </footer>
+
+  <!-- ░░ Корзина / Избранное (выезжающая панель) ░░ -->
+  <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Корзина">
+    <div class="drawer__head">
+      <h2 class="drawer__title" id="drawerTitle">Корзина</h2>
+      <button class="iconbtn" id="drawerClose" type="button" aria-label="Закрыть">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="drawer__body" id="drawerBody"></div>
+    <div class="drawer__foot" id="drawerFoot"></div>
+  </aside>
+
+  <!-- ░░ Быстрый просмотр ░░ -->
+  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalName">
+    <div class="modal__card" id="modalCard"></div>
+  </div>
+
+  <div class="backdrop" id="backdrop" hidden></div>
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
