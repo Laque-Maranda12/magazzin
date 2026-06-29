@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Утренний обжиг — каталог кофе</title>
+  <meta name="description" content="Каталог свежеобжаренного спешелти-кофе: моносорта и бленды от Утреннего обжига." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main>
+    <section class="catalog" aria-labelledby="catalog-title">
+      <header class="catalog__head">
+        <div class="catalog__intro">
+          <p class="eyebrow">Свежий обжиг каждую неделю</p>
+          <h1 id="catalog-title" class="catalog__title">Каталог кофе</h1>
+          <p class="catalog__lede">
+            Моносорта и авторские бленды для эспрессо и фильтра.
+            Обжариваем под заказ и отправляем в течение суток.
+          </p>
+        </div>
+
+        <div class="catalog__filters" role="group" aria-label="Фильтр по способу заваривания">
+          <button class="chip chip--active" type="button">Все</button>
+          <button class="chip" type="button">Эспрессо</button>
+          <button class="chip" type="button">Фильтр</button>
+          <button class="chip" type="button">Декаф</button>
+        </div>
+      </header>
+
+      <ul class="grid" role="list">
+        <li class="card">
+          <a class="card__media" href="#" aria-label="Эфиопия Иргачеффе">
+            <span class="card__badge card__badge--new">Новинка</span>
+            <span class="card__art" style="--c1:#f4c95d;--c2:#e08a3c" aria-hidden="true">☕</span>
+          </a>
+          <div class="card__body">
+            <p class="card__origin">Эфиопия · Иргачеффе</p>
+            <h2 class="card__name"><a href="#">Иргачеффе Конга</a></h2>
+            <p class="card__notes">Жасмин, бергамот, чёрный чай</p>
+            <div class="card__foot">
+              <span class="price">990&nbsp;₽<span class="price__unit">/ 250 г</span></span>
+              <button class="btn btn--buy" type="button">В корзину</button>
+            </div>
+          </div>
+        </li>
+
+        <li class="card">
+          <a class="card__media" href="#" aria-label="Колумбия Уила">
+            <span class="card__art" style="--c1:#e8825a;--c2:#b9472d" aria-hidden="true">☕</span>
+          </a>
+          <div class="card__body">
+            <p class="card__origin">Колумбия · Уила</p>
+            <h2 class="card__name"><a href="#">Уила Супремо</a></h2>
+            <p class="card__notes">Молочный шоколад, слива, карамель</p>
+            <div class="card__foot">
+              <span class="price">850&nbsp;₽<span class="price__unit">/ 250 г</span></span>
+              <button class="btn btn--buy" type="button">В корзину</button>
+            </div>
+          </div>
+        </li>
+
+        <li class="card">
+          <a class="card__media" href="#" aria-label="Кения Ньери">
+            <span class="card__badge card__badge--hit">Хит</span>
+            <span class="card__art" style="--c1:#d65a6e;--c2:#8e2f4a" aria-hidden="true">☕</span>
+          </a>
+          <div class="card__body">
+            <p class="card__origin">Кения · Ньери</p>
+            <h2 class="card__name"><a href="#">Ньери АА</a></h2>
+            <p class="card__notes">Чёрная смородина, томат, грейпфрут</p>
+            <div class="card__foot">
+              <span class="price">1&nbsp;190&nbsp;₽<span class="price__unit">/ 250 г</span></span>
+              <button class="btn btn--buy" type="button">В корзину</button>
+            </div>
+          </div>
+        </li>
+
+        <li class="card">
+          <a class="card__media" href="#" aria-label="Бразилия Серрадо">
+            <span class="card__art" style="--c1:#caa472;--c2:#8a6234" aria-hidden="true">☕</span>
+          </a>
+          <div class="card__body">
+            <p class="card__origin">Бразилия · Серрадо</p>
+            <h2 class="card__name"><a href="#">Серрадо Натурал</a></h2>
+            <p class="card__notes">Фундук, какао, выпечка</p>
+            <div class="card__foot">
+              <span class="price">790&nbsp;₽<span class="price__unit">/ 250 г</span></span>
+              <button class="btn btn--buy" type="button">В корзину</button>
+            </div>
+          </div>
+        </li>
+
+        <li class="card">
+          <a class="card__media" href="#" aria-label="Гватемала Антигуа">
+            <span class="card__art" style="--c1:#7fae7b;--c2:#3f7a52" aria-hidden="true">☕</span>
+          </a>
+          <div class="card__body">
+            <p class="card__origin">Гватемала · Антигуа</p>
+            <h2 class="card__name"><a href="#">Антигуа Уашед</a></h2>
+            <p class="card__notes">Тёмный шоколад, апельсин, миндаль</p>
+            <div class="card__foot">
+              <span class="price">920&nbsp;₽<span class="price__unit">/ 250 г</span></span>
+              <button class="btn btn--buy" type="button">В корзину</button>
+            </div>
+          </div>
+        </li>
+
+        <li class="card">
+          <a class="card__media" href="#" aria-label="Эспрессо-бленд Доброе утро">
+            <span class="card__badge card__badge--hit">Хит</span>
+            <span class="card__art" style="--c1:#b98a5e;--c2:#6e4a2c" aria-hidden="true">☕</span>
+          </a>
+          <div class="card__body">
+            <p class="card__origin">Бленд · Эспрессо</p>
+            <h2 class="card__name"><a href="#">Доброе утро</a></h2>
+            <p class="card__notes">Карамель, орех, тёмный шоколад</p>
+            <div class="card__foot">
+              <span class="price">740&nbsp;₽<span class="price__unit">/ 250 г</span></span>
+              <button class="btn btn--buy" type="button">В корзину</button>
+            </div>
+          </div>
+        </li>
+
+        <li class="card">
+          <a class="card__media" href="#" aria-label="Перу Декаф">
+            <span class="card__art" style="--c1:#9ea7c4;--c2:#5a6488" aria-hidden="true">☕</span>
+          </a>
+          <div class="card__body">
+            <p class="card__origin">Перу · Декаф</p>
+            <h2 class="card__name"><a href="#">Перу без кофеина</a></h2>
+            <p class="card__notes">Красное яблоко, тростниковый сахар</p>
+            <div class="card__foot">
+              <span class="price">880&nbsp;₽<span class="price__unit">/ 250 г</span></span>
+              <button class="btn btn--buy" type="button">В корзину</button>
+            </div>
+          </div>
+        </li>
+
+        <li class="card">
+          <a class="card__media" href="#" aria-label="Панама Гейша">
+            <span class="card__badge card__badge--new">Лимит</span>
+            <span class="card__art" style="--c1:#f0b6c2;--c2:#c76e8a" aria-hidden="true">☕</span>
+          </a>
+          <div class="card__body">
+            <p class="card__origin">Панама · Гейша</p>
+            <h2 class="card__name"><a href="#">Гейша Эсмеральда</a></h2>
+            <p class="card__notes">Личи, жасмин, мёд, персик</p>
+            <div class="card__foot">
+              <span class="price">2&nbsp;450&nbsp;₽<span class="price__unit">/ 250 г</span></span>
+              <button class="btn btn--buy" type="button">В корзину</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
