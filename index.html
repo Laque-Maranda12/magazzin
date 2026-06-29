@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Утренний обжиг — спешелти-кофе</title>
-  <meta name="description" content="Каталог свежеобжаренного спешелти-кофе: моносорта и бленды. Фильтры, корзина, избранное." />
+  <meta name="description" content="Свежеобжаренный спешелти-кофе под заказ: моносорта и бленды. Поиск, фильтры, корзина, избранное." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet"
   />
   <link rel="stylesheet" href="styles.css" />
@@ -54,52 +54,96 @@
   </header>
 
   <main>
+    <!-- ░░ Hero ░░ -->
+    <section class="hero">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <p class="eyebrow"><span class="eyebrow__dot"></span> Свежий обжиг каждую неделю</p>
+          <h1 class="hero__title">Кофе, обжаренный <em>сегодня</em>,<br />— у вас уже завтра</h1>
+          <p class="hero__lede">
+            Моносорта и авторские бленды для эспрессо и фильтра.
+            Обжариваем под заказ маленькими партиями и отправляем в течение суток.
+          </p>
+          <div class="hero__cta">
+            <a class="btn btn--primary btn--lg" href="#catalog">Смотреть каталог</a>
+            <a class="btn btn--ghost btn--lg" href="#">Оформить подписку</a>
+          </div>
+          <ul class="hero__stats" aria-label="О магазине">
+            <li><span class="hero__stat-num">8</span><span class="hero__stat-lbl">сортов в наличии</span></li>
+            <li><span class="hero__stat-num">24ч</span><span class="hero__stat-lbl">до отправки</span></li>
+            <li><span class="hero__stat-num">4.8<span class="hero__stat-star">★</span></span><span class="hero__stat-lbl">средний рейтинг</span></li>
+          </ul>
+        </div>
+
+        <div class="hero__media" aria-hidden="true">
+          <figure class="hero__img hero__img--a" style="--c1:#b98a5e;--c2:#6e4a2c">
+            <img loading="eager" alt=""
+              src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=900&q=80"
+              onerror="this.closest('.hero__img').classList.add('is-noimg')" />
+          </figure>
+          <figure class="hero__img hero__img--b" style="--c1:#e8825a;--c2:#b9472d">
+            <img loading="eager" alt=""
+              src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80"
+              onerror="this.closest('.hero__img').classList.add('is-noimg')" />
+          </figure>
+          <div class="hero__chip">
+            <span class="hero__chip-ico">☕</span>
+            <div>
+              <p class="hero__chip-t">Обжарка под заказ</p>
+              <p class="hero__chip-s">партиями по 5 кг</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░ Каталог ░░ -->
     <section class="catalog" id="catalog" aria-labelledby="catalog-title">
       <header class="catalog__head">
-        <div class="catalog__intro">
-          <p class="eyebrow"><span class="eyebrow__dot"></span> Свежий обжиг каждую неделю</p>
-          <h1 id="catalog-title" class="catalog__title">Каталог&nbsp;кофе</h1>
-          <p class="catalog__lede">
-            Моносорта и авторские бленды для эспрессо и фильтра.
-            Обжариваем под заказ и отправляем в течение суток.
-          </p>
-        </div>
-
-        <div class="catalog__stats" aria-hidden="true">
-          <div class="stat"><span class="stat__num">8</span><span class="stat__lbl">сортов</span></div>
-          <div class="stat"><span class="stat__num">24ч</span><span class="stat__lbl">до отправки</span></div>
-          <div class="stat"><span class="stat__num">4.8</span><span class="stat__lbl">★ рейтинг</span></div>
-        </div>
+        <h2 id="catalog-title" class="catalog__title">Весь каталог</h2>
       </header>
 
-      <!-- ░░ Панель управления ░░ -->
+      <!-- Панель управления -->
       <div class="toolbar">
-        <div class="chips" id="filters" role="group" aria-label="Фильтр по способу заваривания">
-          <button class="chip chip--active" type="button" data-filter="all">Все</button>
-          <button class="chip" type="button" data-filter="espresso">Эспрессо</button>
-          <button class="chip" type="button" data-filter="filter">Фильтр</button>
-          <button class="chip" type="button" data-filter="decaf">Декаф</button>
+        <div class="search">
+          <svg class="search__ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input id="search" type="search" autocomplete="off" placeholder="Поиск: страна, сорт, вкус…" aria-label="Поиск по каталогу" />
+          <button class="search__clear" id="searchClear" type="button" aria-label="Очистить" hidden>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
         </div>
 
-        <div class="toolbar__right">
-          <span class="results" id="results">8 товаров</span>
-          <label class="sort">
-            <span class="sort__lbl">Сортировка</span>
-            <select id="sort" aria-label="Сортировка">
-              <option value="popular">Популярные</option>
-              <option value="price-asc">Сначала дешевле</option>
-              <option value="price-desc">Сначала дороже</option>
-              <option value="rating">По рейтингу</option>
-            </select>
-            <svg class="sort__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </label>
+        <div class="toolbar__row">
+          <div class="chips" id="filters" role="group" aria-label="Фильтр по способу заваривания">
+            <button class="chip chip--active" type="button" data-filter="all">Все</button>
+            <button class="chip" type="button" data-filter="espresso">Эспрессо</button>
+            <button class="chip" type="button" data-filter="filter">Фильтр</button>
+            <button class="chip" type="button" data-filter="decaf">Декаф</button>
+          </div>
+
+          <div class="toolbar__right">
+            <span class="results" id="results">8 товаров</span>
+            <label class="sort">
+              <span class="sort__lbl">Сортировка</span>
+              <select id="sort" aria-label="Сортировка">
+                <option value="popular">Популярные</option>
+                <option value="price-asc">Сначала дешевле</option>
+                <option value="price-desc">Сначала дороже</option>
+                <option value="rating">По рейтингу</option>
+              </select>
+              <svg class="sort__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </label>
+          </div>
         </div>
       </div>
 
       <ul class="grid" id="grid" role="list"></ul>
 
-      <p class="empty" id="empty" hidden>В этой категории пока пусто — загляните в «Все».</p>
-      <noscript><p class="empty">Для интерактивного каталога включите JavaScript.</p></noscript>
+      <div class="empty" id="empty" hidden>
+        <p class="empty__t" id="emptyText">Ничего не найдено</p>
+        <button class="btn btn--ghost" id="emptyReset" type="button">Сбросить фильтры</button>
+      </div>
+      <noscript><p class="empty"><span class="empty__t">Для интерактивного каталога включите JavaScript.</span></p></noscript>
     </section>
   </main>
 
@@ -107,7 +151,7 @@
     <p>© 2026 Утренний обжиг · сверстано вручную на HTML, CSS и vanilla JS</p>
   </footer>
 
-  <!-- ░░ Корзина / Избранное (выезжающая панель) ░░ -->
+  <!-- ░░ Корзина / Избранное ░░ -->
   <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Корзина">
     <div class="drawer__head">
       <h2 class="drawer__title" id="drawerTitle">Корзина</h2>
