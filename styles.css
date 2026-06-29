@@ -11,6 +11,7 @@
   --line: #ece3d6;
   --accent: #b9472d;
   --accent-ink: #ffffff;
+  --star: #e0a32e;
   --shadow-sm: 0 1px 2px rgba(33, 26, 20, 0.06);
   --shadow-md: 0 18px 40px -22px rgba(33, 26, 20, 0.45);
   --radius: 18px;
@@ -42,6 +43,11 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
 }
 
 /* ---------- Секция ---------- */
@@ -153,31 +159,55 @@ a {
   border-color: #e0d3c0;
 }
 
-/* ---------- Изображение / арт ---------- */
+/* ---------- Изображение ---------- */
 .card__media {
   position: relative;
-  display: grid;
-  place-items: center;
   aspect-ratio: 4 / 3;
   background: linear-gradient(135deg, var(--c1, #eee), var(--c2, #ccc));
   overflow: hidden;
 }
 
+.card__link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.55s var(--ease);
+}
+
+.card:hover .card__img {
+  transform: scale(1.06);
+}
+
+/* Запасной вариант, если фото не загрузилось */
 .card__art {
+  display: none;
+  place-items: center;
+  width: 100%;
+  height: 100%;
   font-size: clamp(2.6rem, 6vw, 3.4rem);
   filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.18));
-  transition: transform 0.45s var(--ease);
 }
 
-.card:hover .card__art {
-  transform: scale(1.12) rotate(-4deg);
+.card__media--noimg .card__img {
+  display: none;
 }
 
+.card__media--noimg .card__art {
+  display: grid;
+}
+
+/* Бейдж */
 .card__badge {
   position: absolute;
   top: 0.85rem;
   left: 0.85rem;
-  z-index: 1;
+  z-index: 2;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -192,6 +222,53 @@ a {
 .card__badge--hit {
   background: var(--accent);
   color: var(--accent-ink);
+}
+
+/* Кнопка «в избранное» */
+.card__wish {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink-soft);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  opacity: 0;
+  transform: translateY(-4px) scale(0.9);
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease),
+    color 0.2s var(--ease), background-color 0.2s var(--ease);
+}
+
+.card:hover .card__wish,
+.card__wish:focus-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.card__wish:hover {
+  color: var(--accent);
+  background: #fff;
+}
+
+.card__wish svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.card__wish:hover svg,
+.card__wish[aria-pressed="true"] svg {
+  fill: currentColor;
 }
 
 /* ---------- Тело карточки ---------- */
@@ -239,12 +316,29 @@ a {
   line-height: 1.5;
 }
 
+.card__rating {
+  margin: 0.7rem 0 0;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.card__rating .star {
+  color: var(--star);
+}
+
+.card__reviews {
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
 /* ---------- Подвал карточки ---------- */
 .card__foot {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: 0.6rem 0.75rem;
+  flex-wrap: wrap;
   margin-top: auto;
   padding-top: 1.15rem;
 }
@@ -273,15 +367,29 @@ a {
 }
 
 .btn--buy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  flex: 1 1 7.5rem;
   font-size: 0.9rem;
   font-weight: 600;
   white-space: nowrap;
   color: var(--accent-ink);
   background: var(--accent);
-  padding: 0.6rem 1.1rem;
+  padding: 0.6rem 1.05rem;
   box-shadow: 0 8px 18px -10px rgba(185, 71, 45, 0.9);
   transition: background-color 0.2s var(--ease), transform 0.12s var(--ease),
     box-shadow 0.2s var(--ease);
+}
+
+.btn__ico {
+  width: 1.05rem;
+  height: 1.05rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linejoin: round;
 }
 
 .btn--buy:hover {
@@ -297,7 +405,8 @@ a {
 /* ---------- Доступность: фокус ---------- */
 .chip:focus-visible,
 .btn:focus-visible,
-.card__media:focus-visible,
+.card__wish:focus-visible,
+.card__link:focus-visible,
 .card__name a:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
@@ -317,6 +426,11 @@ a {
   }
   .catalog__head {
     align-items: flex-start;
+  }
+  /* На тач-устройствах избранное всегда видно */
+  .card__wish {
+    opacity: 1;
+    transform: none;
   }
 }
 
