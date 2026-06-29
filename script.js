@@ -3,13 +3,14 @@
    Чистый vanilla JS, без зависимостей
 =================================================================== */
 
-/* ---------- Данные о товарах ---------- */
+/* ---------- Данные о товарах ----------
+   profile: [кислотность, тело, сладость, аромат, послевкусие] (0–5) */
 const PRODUCTS = [
   {
     id: "irgacheffe", name: "Иргачеффе Конга", country: "Эфиопия", region: "Иргачеффе",
     flag: "🇪🇹", cat: "filter", notes: "Жасмин, бергамот, чёрный чай",
     price: 990, rating: 4.9, reviews: 214, roast: 1, badge: { t: "Новинка", k: "new" },
-    c1: "#f4c95d", c2: "#e08a3c",
+    c1: "#f4c95d", c2: "#e08a3c", profile: [5, 2, 3, 5, 4],
     img: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=800&q=80",
     desc: "Промытый лот из кооператива Конга. Чистая чашка с цветочной кислотностью и долгим чайным послевкусием — наш фаворит для фильтра.",
   },
@@ -17,7 +18,7 @@ const PRODUCTS = [
     id: "huila", name: "Уила Супремо", country: "Колумбия", region: "Уила",
     flag: "🇨🇴", cat: "espresso", notes: "Молочный шоколад, слива, карамель",
     price: 850, rating: 4.7, reviews: 168, roast: 3, badge: null,
-    c1: "#e8825a", c2: "#b9472d",
+    c1: "#e8825a", c2: "#b9472d", profile: [3, 4, 4, 3, 4],
     img: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=800&q=80",
     desc: "Классическая Колумбия с плотным телом и сладостью. Раскрывается шоколадом в молоке и идеально держит баланс в эспрессо.",
   },
@@ -25,7 +26,7 @@ const PRODUCTS = [
     id: "nyeri", name: "Ньери АА", country: "Кения", region: "Ньери",
     flag: "🇰🇪", cat: "filter", notes: "Чёрная смородина, томат, грейпфрут",
     price: 1190, rating: 5.0, reviews: 92, roast: 2, badge: { t: "Хит", k: "hit" },
-    c1: "#d65a6e", c2: "#8e2f4a",
+    c1: "#d65a6e", c2: "#8e2f4a", profile: [5, 3, 3, 4, 4],
     img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80",
     desc: "Яркая кенийская классика категории AA. Взрывная ягодная кислотность и сочность — для тех, кто любит характер в чашке.",
   },
@@ -33,7 +34,7 @@ const PRODUCTS = [
     id: "cerrado", name: "Серрадо Натурал", country: "Бразилия", region: "Серрадо",
     flag: "🇧🇷", cat: "espresso", notes: "Фундук, какао, выпечка",
     price: 790, rating: 4.6, reviews: 301, roast: 4, badge: null,
-    c1: "#caa472", c2: "#8a6234",
+    c1: "#caa472", c2: "#8a6234", profile: [2, 4, 4, 3, 3],
     img: "https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=800&q=80",
     desc: "Натуральная обработка даёт ореховую сладость и низкую кислотность. Основа для уютного утреннего эспрессо и капучино.",
   },
@@ -41,7 +42,7 @@ const PRODUCTS = [
     id: "antigua", name: "Антигуа Уашед", country: "Гватемала", region: "Антигуа",
     flag: "🇬🇹", cat: "espresso", notes: "Тёмный шоколад, апельсин, миндаль",
     price: 920, rating: 4.8, reviews: 137, roast: 3, badge: null,
-    c1: "#7fae7b", c2: "#3f7a52",
+    c1: "#7fae7b", c2: "#3f7a52", profile: [3, 4, 3, 4, 4],
     img: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=800&q=80",
     desc: "Вулканическая почва Антигуа даёт глубину и цитрусовую искру. Шоколадно-апельсиновый профиль с чистым финишем.",
   },
@@ -49,7 +50,7 @@ const PRODUCTS = [
     id: "morning", name: "Доброе утро", country: "Бленд", region: "Эспрессо",
     flag: "☕", cat: "espresso", notes: "Карамель, орех, тёмный шоколад",
     price: 740, rating: 4.8, reviews: 456, roast: 4, badge: { t: "Хит", k: "hit" },
-    c1: "#b98a5e", c2: "#6e4a2c",
+    c1: "#b98a5e", c2: "#6e4a2c", profile: [2, 4, 5, 3, 4],
     img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80",
     desc: "Наш авторский бленд для эспрессо-машины и гейзера. Сбалансированный, сладкий и прощающий ошибки в рецепте.",
   },
@@ -57,7 +58,7 @@ const PRODUCTS = [
     id: "peru", name: "Перу без кофеина", country: "Перу", region: "Декаф",
     flag: "🇵🇪", cat: "decaf", notes: "Красное яблоко, тростниковый сахар",
     price: 880, rating: 4.5, reviews: 88, roast: 3, badge: null,
-    c1: "#9ea7c4", c2: "#5a6488",
+    c1: "#9ea7c4", c2: "#5a6488", profile: [3, 3, 4, 3, 3],
     img: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
     desc: "Декаф по технологии Sugarcane: мягкий, сладкий, без «травяных» нот. Вкус настоящего кофе — даже вечером.",
   },
@@ -65,13 +66,14 @@ const PRODUCTS = [
     id: "geisha", name: "Гейша Эсмеральда", country: "Панама", region: "Гейша",
     flag: "🇵🇦", cat: "filter", notes: "Личи, жасмин, мёд, персик",
     price: 2450, rating: 5.0, reviews: 47, roast: 1, badge: { t: "Лимит", k: "new" },
-    c1: "#f0b6c2", c2: "#c76e8a",
+    c1: "#f0b6c2", c2: "#c76e8a", profile: [4, 2, 4, 5, 5],
     img: "https://images.unsplash.com/photo-1442550528053-c431ecb55509?auto=format&fit=crop&w=800&q=80",
     desc: "Легендарная панамская Гейша с фермы Эсмеральда. Чайное тело, аромат жасмина и фруктовый букет — событие в чашке.",
   },
 ];
 
-const FREE_SHIP = 2500; // порог бесплатной доставки
+const FREE_SHIP = 2500;
+const AXES = ["Кислотность", "Тело", "Сладость", "Аромат", "Послевкусие"];
 
 /* ---------- SVG-иконки ---------- */
 const ICON = {
@@ -96,17 +98,14 @@ const FALLBACK_ART =
 
 /* ---------- Состояние ---------- */
 const store = {
-  filter: "all",
-  sort: "popular",
-  query: "",
+  filter: "all", sort: "popular", query: "",
   cart: load("ozb_cart", {}),
   wish: new Set(load("ozb_wish", [])),
   drawerMode: "cart",
 };
 
 function load(key, fallback) {
-  try { return JSON.parse(localStorage.getItem(key)) ?? fallback; }
-  catch { return fallback; }
+  try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; }
 }
 function save() {
   try {
@@ -133,10 +132,33 @@ function roastDots(level) {
   return `<span class="roast" title="Степень обжарки: ${level} из 5">${s}</span>`;
 }
 
-/* ---------- Выборка с учётом фильтра/поиска/сортировки ---------- */
+/* ---------- Радар вкуса (SVG) ---------- */
+function radarSVG(values) {
+  const cx = 115, cy = 72, R = 48, N = values.length;
+  const pt = (i, r) => {
+    const a = -Math.PI / 2 + (i * 2 * Math.PI) / N;
+    return [cx + r * Math.cos(a), cy + r * Math.sin(a)];
+  };
+  const poly = (r, fn) => values.map((v, i) => pt(i, fn ? fn(v) : r).join(",")).join(" ");
+  let grid = "";
+  for (let ring = 1; ring <= 5; ring++) grid += `<polygon class="radar__grid" points="${poly((R * ring) / 5)}"/>`;
+  let axes = "", labels = "";
+  values.forEach((v, i) => {
+    const [x, y] = pt(i, R);
+    axes += `<line class="radar__axis" x1="${cx}" y1="${cy}" x2="${x}" y2="${y}"/>`;
+    const [lx, ly] = pt(i, R + 14);
+    const anchor = Math.abs(lx - cx) < 4 ? "middle" : lx > cx ? "start" : "end";
+    labels += `<text class="radar__label" x="${lx}" y="${ly + 3}" text-anchor="${anchor}">${AXES[i]}</text>`;
+  });
+  const area = `<polygon class="radar__area" points="${poly(0, (v) => (R * v) / 5)}"/>`;
+  const dots = values.map((v, i) => `<circle class="radar__dot" cx="${pt(i, (R * v) / 5)[0]}" cy="${pt(i, (R * v) / 5)[1]}" r="2.4"/>`).join("");
+  return `<svg class="radar" viewBox="0 0 230 152" role="img" aria-label="Вкусовой профиль">${grid}${axes}${area}${dots}${labels}</svg>`;
+}
+
+/* ---------- Выборка ---------- */
 function visibleProducts() {
   const q = store.query.trim().toLowerCase();
-  let list = PRODUCTS.filter((p) => {
+  const list = PRODUCTS.filter((p) => {
     const okCat = store.filter === "all" || p.cat === store.filter;
     const okQ = !q || [p.name, p.country, p.region, p.notes].join(" ").toLowerCase().includes(q);
     return okCat && okQ;
@@ -151,15 +173,14 @@ function visibleProducts() {
 }
 
 /* ---------- Рендер карточек ---------- */
-function cardHTML(p) {
+function cardHTML(p, i) {
   const inWish = store.wish.has(p.id);
   const badge = p.badge ? `<span class="card__badge card__badge--${p.badge.k}">${p.badge.t}</span>` : "";
   return `
-  <li class="card reveal" data-id="${p.id}" data-cat="${p.cat}">
+  <li class="card reveal" data-id="${p.id}" style="transition-delay:${(i % 4) * 0.06}s">
     <div class="card__media" style="--c1:${p.c1};--c2:${p.c2}">
       ${badge}
-      <button class="card__wish${inWish ? " is-active" : ""}" data-act="wish" data-id="${p.id}"
-              type="button" aria-pressed="${inWish}" aria-label="В избранное">${ICON.heart}</button>
+      <button class="card__wish${inWish ? " is-active" : ""}" data-act="wish" data-id="${p.id}" type="button" aria-pressed="${inWish}" aria-label="В избранное">${ICON.heart}</button>
       <img class="card__img" loading="lazy" alt="${p.name}" src="${p.img}" />
       ${FALLBACK_ART}
       <button class="card__quick" data-act="quick" data-id="${p.id}" type="button">${ICON.eye} Быстрый просмотр</button>
@@ -169,8 +190,7 @@ function cardHTML(p) {
       <h3 class="card__name"><a href="#" data-act="quick" data-id="${p.id}">${p.name}</a></h3>
       <p class="card__notes">${p.notes}</p>
       <div class="card__meta">
-        <span class="card__rating"><span class="star">★</span> ${p.rating.toFixed(1)}
-          <span class="card__reviews">· ${p.reviews}</span></span>
+        <span class="card__rating"><span class="star">★</span> ${p.rating.toFixed(1)} <span class="card__reviews">· ${p.reviews}</span></span>
         ${roastDots(p.roast)}
       </div>
       <div class="card__foot">
@@ -185,7 +205,6 @@ function renderGrid() {
   const list = visibleProducts();
   $("#grid").innerHTML = list.map(cardHTML).join("");
   $("#results").textContent = `${list.length} ${plural(list.length, "товар", "товара", "товаров")}`;
-
   const empty = $("#empty");
   empty.hidden = list.length !== 0;
   if (!list.length) {
@@ -220,8 +239,7 @@ const cartTotal = () => Object.entries(store.cart).reduce((s, [id, q]) => s + by
 function addToCart(id, srcEl) {
   store.cart[id] = (store.cart[id] || 0) + 1;
   save(); syncBadges(); renderDrawer();
-  flyToCart(srcEl);
-  bumpCart();
+  flyToCart(srcEl); bumpCart();
   toast(`«${byId(id).name}» в корзине`);
 }
 function setQty(id, qty) {
@@ -233,7 +251,7 @@ function bumpCart() {
   b.classList.remove("pop"); void b.offsetWidth; b.classList.add("pop");
 }
 
-/* ---------- Полёт товара в корзину ---------- */
+/* ---------- Полёт в корзину ---------- */
 function flyToCart(srcEl) {
   const target = $("#cartOpen");
   if (!srcEl || !target || reduceMotion()) return;
@@ -244,17 +262,14 @@ function flyToCart(srcEl) {
   const img = srcEl.tagName === "IMG" ? srcEl : srcEl.querySelector?.("img");
   if (img && img.currentSrc) fly.style.backgroundImage = `url("${img.currentSrc}")`;
   else fly.style.background = "var(--accent)";
-  Object.assign(fly.style, {
-    left: s.left + "px", top: s.top + "px",
-    width: Math.min(s.width, 120) + "px", height: Math.min(s.height, 90) + "px",
-  });
+  const w = Math.min(s.width, 120), h = Math.min(s.height, 90);
+  Object.assign(fly.style, { left: s.left + "px", top: s.top + "px", width: w + "px", height: h + "px" });
   document.body.appendChild(fly);
-  const dx = t.left + t.width / 2 - (s.left + Math.min(s.width, 120) / 2);
-  const dy = t.top + t.height / 2 - (s.top + Math.min(s.height, 90) / 2);
+  const dx = t.left + t.width / 2 - (s.left + w / 2);
+  const dy = t.top + t.height / 2 - (s.top + h / 2);
   requestAnimationFrame(() => {
     fly.style.transform = `translate(${dx}px, ${dy}px) scale(0.1)`;
-    fly.style.opacity = "0.2";
-    fly.style.borderRadius = "50%";
+    fly.style.opacity = "0.2"; fly.style.borderRadius = "50%";
   });
   fly.addEventListener("transitionend", () => fly.remove(), { once: true });
   setTimeout(() => fly.remove(), 1000);
@@ -281,15 +296,14 @@ function syncBadges() {
   const wEl = $("#wishCount"); wEl.textContent = wc; wEl.hidden = wc === 0;
 }
 
-/* ---------- Выезжающая панель ---------- */
+/* ---------- Панель корзины/избранного ---------- */
 function openDrawer(mode) {
   store.drawerMode = mode;
   $("#drawerTitle").textContent = mode === "wish" ? "Избранное" : "Корзина";
   renderDrawer();
   $("#drawer").classList.add("is-open");
   $("#drawer").setAttribute("aria-hidden", "false");
-  showBackdrop();
-  trapFocus($("#drawer"));
+  showBackdrop(); trapFocus($("#drawer"));
 }
 function closeDrawer() {
   if (!isOpen("#drawer")) return;
@@ -297,24 +311,20 @@ function closeDrawer() {
   $("#drawer").setAttribute("aria-hidden", "true");
   maybeHideBackdrop(); releaseFocus();
 }
-
 function renderDrawer() {
   const body = $("#drawerBody"), foot = $("#drawerFoot");
   if (store.drawerMode === "wish") {
     const items = [...store.wish].map(byId);
     body.innerHTML = items.length ? items.map(wishRow).join("")
       : emptyState("В избранном пусто", "Жмите ♥ на карточке товара.");
-    foot.innerHTML = "";
-    return;
+    foot.innerHTML = ""; return;
   }
   const entries = Object.entries(store.cart);
   if (!entries.length) {
     body.innerHTML = emptyState("Корзина пуста", "Добавьте кофе из каталога — он появится здесь.");
-    foot.innerHTML = "";
-    return;
+    foot.innerHTML = ""; return;
   }
   body.innerHTML = entries.map(([id, q]) => cartRow(byId(id), q)).join("");
-
   const total = cartTotal();
   const remain = Math.max(0, FREE_SHIP - total);
   const pct = Math.min(100, Math.round((total / FREE_SHIP) * 100));
@@ -322,14 +332,10 @@ function renderDrawer() {
     ? `<p class="ship__txt">${ICON.truck} До бесплатной доставки ещё <strong>${rub(remain)}</strong></p>`
     : `<p class="ship__txt ship__txt--done">${ICON.truck} Доставка бесплатно — ура!</p>`;
   foot.innerHTML = `
-    <div class="ship">
-      ${ship}
-      <div class="ship__bar"><span style="width:${pct}%"></span></div>
-    </div>
+    <div class="ship">${ship}<div class="ship__bar"><span style="width:${pct}%"></span></div></div>
     <div class="drawer__total"><span>Итого</span><strong>${rub(total)}</strong></div>
     <button class="btn btn--primary btn--full" id="checkout" type="button">Оформить заказ</button>`;
 }
-
 function emptyState(title, sub) {
   return `<div class="drawer__empty">${ICON.bean}<p class="drawer__empty-t">${title}</p><p class="drawer__empty-s">${sub}</p></div>`;
 }
@@ -337,10 +343,7 @@ function cartRow(p, q) {
   return `
   <div class="line" data-id="${p.id}">
     <span class="line__thumb" style="--c1:${p.c1};--c2:${p.c2}">${p.flag}</span>
-    <div class="line__info">
-      <p class="line__name">${p.name}</p>
-      <p class="line__price">${rub(p.price)}</p>
-    </div>
+    <div class="line__info"><p class="line__name">${p.name}</p><p class="line__price">${rub(p.price)}</p></div>
     <div class="qty">
       <button class="qty__btn" data-act="dec" data-id="${p.id}" type="button" aria-label="Меньше">${ICON.minus}</button>
       <span class="qty__num">${q}</span>
@@ -353,10 +356,7 @@ function wishRow(p) {
   return `
   <div class="line" data-id="${p.id}">
     <span class="line__thumb" style="--c1:${p.c1};--c2:${p.c2}">${p.flag}</span>
-    <div class="line__info">
-      <p class="line__name">${p.name}</p>
-      <p class="line__price">${rub(p.price)}</p>
-    </div>
+    <div class="line__info"><p class="line__name">${p.name}</p><p class="line__price">${rub(p.price)}</p></div>
     <button class="btn btn--ghost btn--sm" data-act="add" data-id="${p.id}" type="button">В корзину</button>
     <button class="line__del" data-act="wish" data-id="${p.id}" type="button" aria-label="Убрать">${ICON.close}</button>
   </div>`;
@@ -369,20 +369,21 @@ function openModal(id) {
   $("#modalCard").innerHTML = `
     <button class="modal__close" id="modalClose" type="button" aria-label="Закрыть">${ICON.close}</button>
     <div class="modal__media" style="--c1:${p.c1};--c2:${p.c2}">
-      <img class="modal__img" alt="${p.name}" src="${p.img}" />
-      ${FALLBACK_ART}
+      <img class="modal__img" alt="${p.name}" src="${p.img}" />${FALLBACK_ART}
     </div>
     <div class="modal__info">
       ${p.badge ? `<span class="card__badge card__badge--${p.badge.k} modal__badge">${p.badge.t}</span>` : ""}
       <p class="card__origin"><span class="card__flag">${p.flag}</span> ${p.country} · ${p.region}</p>
       <h2 class="modal__name" id="modalName">${p.name}</h2>
       <div class="card__meta">
-        <span class="card__rating"><span class="star">★</span> ${p.rating.toFixed(1)}
-          <span class="card__reviews">· ${p.reviews} отзывов</span></span>
+        <span class="card__rating"><span class="star">★</span> ${p.rating.toFixed(1)} <span class="card__reviews">· ${p.reviews} отзывов</span></span>
         ${roastDots(p.roast)}
       </div>
       <p class="modal__desc">${p.desc}</p>
-      <p class="modal__notes"><span>Дескрипторы:</span> ${p.notes}</p>
+      <div class="profile">
+        <p class="profile__t">Вкусовой профиль</p>
+        ${radarSVG(p.profile)}
+      </div>
       <div class="modal__buy">
         <span class="price price--lg">${rub(p.price)}<span class="price__unit">/ 250 г</span></span>
         <button class="btn btn--primary" data-act="add" data-id="${p.id}" type="button">${ICON.cart}<span>В корзину</span></button>
@@ -392,8 +393,7 @@ function openModal(id) {
   initImages($("#modalCard"));
   $("#modal").classList.add("is-open");
   $("#modal").setAttribute("aria-hidden", "false");
-  showBackdrop();
-  trapFocus($("#modalCard"));
+  showBackdrop(); trapFocus($("#modalCard"));
 }
 function closeModal() {
   if (!isOpen("#modal")) return;
@@ -415,7 +415,7 @@ function maybeHideBackdrop() {
   }
 }
 
-/* ---------- Ловушка фокуса (доступность) ---------- */
+/* ---------- Ловушка фокуса ---------- */
 let lastFocused = null;
 const FOCUSABLE = 'a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])';
 function trapFocus(container) {
@@ -439,13 +439,51 @@ function onTrapKey(e) {
 }
 
 /* ---------- Тосты ---------- */
-function toast(msg) {
+function toast(msg, kind) {
   const el = document.createElement("div");
-  el.className = "toast";
-  el.innerHTML = `<span class="toast__ico">${ICON.check}</span>${msg}`;
+  el.className = "toast" + (kind === "error" ? " toast--error" : "");
+  el.innerHTML = `<span class="toast__ico">${kind === "error" ? ICON.close : ICON.check}</span>${msg}`;
   $("#toasts").appendChild(el);
   requestAnimationFrame(() => el.classList.add("is-on"));
-  setTimeout(() => { el.classList.remove("is-on"); setTimeout(() => el.remove(), 300); }, 2200);
+  setTimeout(() => { el.classList.remove("is-on"); setTimeout(() => el.remove(), 300); }, 2400);
+}
+
+/* ---------- Ripple на кнопках ---------- */
+function ripple(e) {
+  const btn = e.target.closest(".btn, .chip");
+  if (!btn || reduceMotion()) return;
+  const r = btn.getBoundingClientRect();
+  const size = Math.max(r.width, r.height);
+  const s = document.createElement("span");
+  s.className = "ripple";
+  s.style.width = s.style.height = size + "px";
+  s.style.left = e.clientX - r.left - size / 2 + "px";
+  s.style.top = e.clientY - r.top - size / 2 + "px";
+  btn.appendChild(s);
+  s.addEventListener("animationend", () => s.remove(), { once: true });
+}
+
+/* ---------- Счётчики ---------- */
+function countUp(el) {
+  const target = parseFloat(el.dataset.count);
+  const dec = parseInt(el.dataset.dec || "0", 10);
+  if (reduceMotion()) { el.textContent = target.toFixed(dec); return; }
+  const dur = 1100, start = performance.now();
+  const tick = (t) => {
+    const p = Math.min(1, (t - start) / dur);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = (target * eased).toFixed(dec);
+    if (p < 1) requestAnimationFrame(tick); else el.textContent = target.toFixed(dec);
+  };
+  requestAnimationFrame(tick);
+}
+function initCounters() {
+  const els = document.querySelectorAll("[data-count]");
+  if (!("IntersectionObserver" in window)) { els.forEach(countUp); return; }
+  const obs = new IntersectionObserver((entries, o) => {
+    entries.forEach((e) => { if (e.isIntersecting) { countUp(e.target); o.unobserve(e.target); } });
+  }, { threshold: 0.6 });
+  els.forEach((el) => obs.observe(el));
 }
 
 /* ---------- Появление при прокрутке ---------- */
@@ -481,6 +519,26 @@ function onSearch(value) {
   renderGrid();
 }
 
+/* ---------- Подписка ---------- */
+function selectPlan(name) {
+  document.querySelectorAll(".plan").forEach((el) => el.classList.toggle("is-selected", el.dataset.plan === name));
+  toast(`Тариф «${name}» выбран — оформите оплату на кассе`);
+}
+function submitNewsletter(e) {
+  e.preventDefault();
+  const input = $("#email");
+  const val = input.value.trim();
+  const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+  if (!ok) {
+    input.classList.remove("shake"); void input.offsetWidth; input.classList.add("shake");
+    input.focus();
+    toast("Проверьте адрес почты", "error");
+    return;
+  }
+  toast(`Готово! Подтверждение отправлено на ${val}`);
+  input.value = "";
+}
+
 /* ---------- События ---------- */
 function bind() {
   $("#filters").addEventListener("click", (e) => {
@@ -490,9 +548,7 @@ function bind() {
     document.querySelectorAll(".chip").forEach((c) => c.classList.toggle("chip--active", c === chip));
     renderGrid();
   });
-
   $("#sort").addEventListener("change", (e) => { store.sort = e.target.value; renderGrid(); });
-
   $("#search").addEventListener("input", (e) => onSearch(e.target.value));
   $("#searchClear").addEventListener("click", () => { $("#search").value = ""; onSearch(""); $("#search").focus(); });
   $("#emptyReset").addEventListener("click", () => {
@@ -501,11 +557,10 @@ function bind() {
     renderGrid();
   });
 
-  // делегирование действий
   document.addEventListener("click", (e) => {
     const el = e.target.closest("[data-act]");
     if (!el) return;
-    const { act, id } = el.dataset;
+    const { act, id, plan, net } = el.dataset;
     if (act === "add") {
       e.preventDefault();
       const card = el.closest(".card") || el.closest(".modal__card");
@@ -516,7 +571,12 @@ function bind() {
     else if (act === "inc") setQty(id, (store.cart[id] || 0) + 1);
     else if (act === "dec") setQty(id, (store.cart[id] || 0) - 1);
     else if (act === "del") setQty(id, 0);
+    else if (act === "plan") selectPlan(plan);
+    else if (act === "social") toast(`${net}: скоро будем на связи!`);
+    else if (act === "soon") toast("Этот раздел скоро появится 🙂");
   });
+
+  $("#newsletter").addEventListener("submit", submitNewsletter);
 
   $("#drawerFoot").addEventListener("click", (e) => {
     if (e.target.closest("#checkout")) {
@@ -534,6 +594,7 @@ function bind() {
   });
   $("#themeToggle").addEventListener("click", toggleTheme);
 
+  document.addEventListener("pointerdown", ripple);
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") { closeDrawer(); closeModal(); }
     onTrapKey(e);
@@ -544,5 +605,6 @@ function bind() {
 initTheme();
 document.addEventListener("DOMContentLoaded", () => {
   bind(); syncBadges(); renderGrid();
-  initImages(document); // hero и прочие изображения
+  initImages(document);
+  initCounters();
 });
